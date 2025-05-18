@@ -1,11 +1,11 @@
 #![no_std]
 #![no_main]
 
-use panic_halt as _;
-use rp2040_hal as hal;
-use hal::pac;
 use embedded_hal::delay::DelayNs;
 use embedded_hal::digital::OutputPin;
+use hal::pac;
+use panic_halt as _;
+use rp2040_hal as hal;
 
 #[unsafe(link_section = ".boot2")]
 #[used]
