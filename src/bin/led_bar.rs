@@ -13,7 +13,6 @@ use rp2040_hal as hal;
 pub static BOOT2: [u8; 256] = rp2040_boot2::BOOT_LOADER_GENERIC_03H;
 const XTAL_FREQ_HZ: u32 = 12_000_000u32;
 
-
 #[rp2040_hal::entry]
 fn main() -> ! {
     let mut pac = pac::Peripherals::take().unwrap();
@@ -53,8 +52,7 @@ fn main() -> ! {
     let mut led8 = pins.gpio27.into_push_pull_output();
     let mut led9 = pins.gpio28.into_push_pull_output();
 
-    let leds: [&mut dyn embedded_hal::digital::OutputPin<Error = core::convert::Infallible>;
-        10] = [
+    let leds: [&mut dyn embedded_hal::digital::OutputPin<Error = core::convert::Infallible>; 10] = [
         &mut led0, &mut led1, &mut led2, &mut led3, &mut led4, &mut led5, &mut led6, &mut led7,
         &mut led8, &mut led9,
     ];
