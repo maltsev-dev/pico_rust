@@ -2,11 +2,9 @@
 #![no_main]
 
 use embedded_hal::delay::DelayNs;
-// use embedded_hal::digital::{InputPin, OutputPin, StatefulOutputPin};
 use hal::pac;
 use panic_halt as _;
 use rp2040_hal as hal;
-// use rp2040_hal::gpio::Pin;
 
 #[unsafe(link_section = ".boot2")]
 #[used]
