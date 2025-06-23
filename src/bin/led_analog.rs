@@ -1,29 +1,15 @@
 #![no_std]
 #![no_main]
 
-use embedded_hal::digital::{InputPin, OutputPin, StatefulOutputPin};
-use embedded_hal::pwm::SetDutyCycle;
+use embedded_hal::{delay::DelayNs, pwm::SetDutyCycle};
 use hal::pac;
 use panic_halt as _;
-use rp2040_hal as hal;
-use rp2040_hal::pwm::Slice;
-use rp2040_hal::{
-    prelude::*,
-    pwm::{InputHighRunning, Slices},
-};
+use rp2040_hal::{self as hal, pwm::Slices};
 
 #[unsafe(link_section = ".boot2")]
 #[used]
 pub static BOOT2: [u8; 256] = rp2040_boot2::BOOT_LOADER_GENERIC_03H;
 const XTAL_FREQ_HZ: u32 = 12_000_000u32;
-
-// fn reverse_led(led: &mut (impl OutputPin + StatefulOutputPin)) {
-//     if led.is_set_high().unwrap() {
-//         led.set_low().unwrap();
-//     } else {
-//         led.set_high().unwrap();
-//     }
-// }
 
 #[rp2040_hal::entry]
 fn main() -> ! {
@@ -42,11 +28,6 @@ fn main() -> ! {
     )
     .unwrap();
 
-    // use rp2040_hal::{
-    //     prelude::*,
-    //     pwm::{InputHighRunning, Slices},
-    // };
-
     let mut timer = rp2040_hal::Timer::new(pac.TIMER, &mut pac.RESETS, &clocks);
 
     let sio = hal::Sio::new(pac.SIO);
@@ -58,29 +39,30 @@ fn main() -> ! {
         &mut pac.RESETS,
     );
 
-    // Init PWMs
+    // PWM Slices Init
     let pwm_slices = Slices::new(pac.PWM, &mut pac.RESETS);
+    // Get 7th slice (controls GPIO 14 (A) and GPIO 15 (B))
+    let mut pwm_slice = pwm_slices.pwm7;
 
-    // Configure PWM7
-    let mut pwm = pwm_slices.pwm7;
-    pwm.set_ph_correct();
-    pwm.enable();
+    pwm_slice.set_ph_correct(); // Phase correct mode = smoother signal
+    pwm_slice.set_top(255); // 8-bit duty cycle precision
+    pwm_slice.enable(); // enable slice
 
-    // Set the PWM frequency to 10kHz
-    let system_freq = clocks.system_clock.freq(); // in Hz
-    let pwm_freq = 10_000u32; // 10kHz
-    let divider = 1u8; // default divider
+    // Get channel_b from 7th slice
+    let mut channel_b = pwm_slice.channel_b;
+    // Make channel_b output to 15th pin
+    let _pin = channel_b.output_to(pins.gpio15);
 
-    let top = (system_freq / (pwm_freq as u32 * divider as u32)) - 1;
+    let mut duty: i16 = 0;
+    let mut step: i16 = 1;
 
-    pwm.set_top(top as u16);
-    pwm.set_div_int(divider);
+    loop {
+        let _ = channel_b.set_duty_cycle(duty as u16);
+        timer.delay_us(1000);
 
-    // Connect GPIO15 to PWM7 B channel
-    let _channel_b = pwm.channel_b.output_to(pins.gpio15);
-
-    // Set duty cycle ( 50%)
-    pwm.channel_b.set_duty(top as u16 / 2);
-
-    loop {}
+        duty += step;
+        if duty >= 255 || duty <= 0 {
+            step = -step;
+        }
+    }
 }

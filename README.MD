@@ -32,9 +32,9 @@ It serves as a playground for testing ideas, learning embedded concepts, and bui
 | Project Name            | Description                         | Status         |
 | ----------------------- | ----------------------------------- | -------------- |
 | `blinky_led_by_button`  | External LED blink controlled by button           | ✅ Done         |
-| `led_bar`               | Make led flow on 10 LED bar graph   | ✅ Done |
+| `led_bar`               | Make LED flow on 10 LED bar graph   | ✅ Done |
 | `led_lamp`              | LED ON and LED OFF with button         | ✅ Done      |
-| `led_analog`            | Experiments with PWM                | 🔄 In Progress |
+| `led_analog`            | Breathing LED with PWM                | ✅ Done |
 | `led_cycle`             | Experiments with Freenove 8 RGB LED Module | ⏳ Planned      |
 
 *More to come.*
