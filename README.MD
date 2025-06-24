@@ -35,7 +35,8 @@ It serves as a playground for testing ideas, learning embedded concepts, and bui
 | `led_bar`               | Make LED flow on 10 LED bar graph   | ✅ Done |
 | `led_lamp`              | LED ON and LED OFF with button         | ✅ Done      |
 | `led_analog`            | Breathing LED with PWM                | ✅ Done |
-| `led_cycle`             | Experiments with Freenove 8 RGB LED Module | ⏳ Planned      |
+| `led_bar_pwm`             | Make LED flow on 10 LED bar graph with PWM | ✅ Done      |
+| `led_rgb`             | Experiments with RGB LED | ⏳ Planned      |
 
 *More to come.*
 
