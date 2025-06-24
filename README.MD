@@ -9,7 +9,7 @@ It serves as a playground for testing ideas, learning embedded concepts, and bui
 
 **Goals:**
 
-* Explore RP2040 features with Pico SDK / Arduino / MicroPython / CircuitPython
+* Explore RP2040 features with `rp2040_hal`
 * Build Wi-Fi-enabled IoT devices
 * Interface with peripherals (GPIO, I2C, SPI, UART, ADC, PWM)
 * Experiment with power management, timers, interrupts
@@ -21,7 +21,7 @@ It serves as a playground for testing ideas, learning embedded concepts, and bui
 
 * Raspberry Pi Pico W
 * Breadboard & jumper wires
-* Sensors: DHT11, MPU6050, BH1750, etc.
+* Sensors: DHT11, MPU6050, BH1750, HW-416A, HC-SR04, HW-504,
 * Modules: OLED, WS2812 (Neopixels), relay, MOSFET driver
 * Power: USB / battery / external supply 
 
