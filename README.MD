@@ -21,7 +21,7 @@ It serves as a playground for testing ideas, learning embedded concepts, and bui
 
 * Raspberry Pi Pico W
 * Breadboard & jumper wires
-* Sensors: DHT11, MPU6050, BH1750, HW-416A, HC-SR04, HW-504,
+* Sensors: DHT11, MPU6050, BH1750, HW-416A, HC-SR04, HW-504, etc
 * Modules: OLED, WS2812 (Neopixels), relay, MOSFET driver
 * Power: USB / battery / external supply 
 
@@ -36,7 +36,8 @@ It serves as a playground for testing ideas, learning embedded concepts, and bui
 | `led_lamp`              | LED ON and LED OFF with button         | ✅ Done      |
 | `led_analog`            | Breathing LED with PWM                | ✅ Done |
 | `led_bar_pwm`             | Make LED flow on 10 LED bar graph with PWM | ✅ Done      |
-| `led_rgb`             | Experiments with RGB LED | ⏳ Planned      |
+| `led_rgb`             | Experiments with RGB LED | ✅ Done       |
+| `led_circle`             | Make LED circle with freenove | ⏳ Planned       |
 
 *More to come.*
 
