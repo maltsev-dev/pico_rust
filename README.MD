@@ -37,7 +37,8 @@ It serves as a playground for testing ideas, learning embedded concepts, and bui
 | `led_analog`            | Breathing LED with PWM                | ✅ Done |
 | `led_bar_pwm`             | Make LED flow on 10 LED bar graph with PWM | ✅ Done      |
 | `led_rgb`             | Experiments with RGB LED | ✅ Done       |
-| `led_circle`             | Make LED circle with freenove | ⏳ Planned       |
+| `led_circle`             | Make LED circle with freenove | ✅ Done        |
+| `doorbell`             | Touch active buzzer | ⏳ Planned       |
 
 *More to come.*
 

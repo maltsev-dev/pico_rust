@@ -31,6 +31,8 @@ nb = "1.0"
 panic-halt = "0.2.0"
 panic-probe = {version = "0.3.1", features = ["print-defmt"]}
 pio = "0.3.0"
+ws2812-pio = "0.9"
+smart-leds = "0.3"
 
 portable-atomic = {version = "1.7.0", features = ["critical-section"]}
 rp2040-boot2 = "0.3.0"
